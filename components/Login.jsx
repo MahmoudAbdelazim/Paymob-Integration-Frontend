@@ -23,7 +23,7 @@ const Login = () => {
       );
       if (response.status == 200) {
         const result = await response.json();
-        localStorage.setItem('authToken', result.user.token);
+        localStorage.setItem("authToken", result.user.token);
         push("/");
       } else {
         const result = await response.json();
@@ -35,7 +35,8 @@ const Login = () => {
   };
   return (
     <div className="text-center pt-10">
-      <div className=" border-cyan-200 border-2 w-2/6 mx-auto p-4 rounded-md mb-10">
+      <h2 className="text-3xl mb-10">Login To The App</h2>
+      <div className=" border-gray-200 border-2 w-2/6 mx-auto p-5 rounded-md mb-10">
         <div>
           <label className="block mb-2 text-sm font-medium text-gray-900 text-left">
             Username or Phone number
@@ -47,7 +48,10 @@ const Login = () => {
             id="username"
             value={loginData.usernameOrPhoneNumber}
             onChange={(e) =>
-              setLoginData({ ...loginData, usernameOrPhoneNumber: e.target.value })
+              setLoginData({
+                ...loginData,
+                usernameOrPhoneNumber: e.target.value,
+              })
             }
           />
         </div>
@@ -67,6 +71,12 @@ const Login = () => {
           />
         </div>
         <div className="text-red-600 mb-4">{msg}</div>
+        <div className="text-left mb-4 mt-8">
+          Don't have an account yet?{" "}
+          <a className="underline text-cyan-700" href="/signup">
+            Signup
+          </a>
+        </div>
         <button
           className="py-2 px-4 bg-cyan-700 text-white mx-4 text-xl rounded-md"
           onClick={handleLogin}

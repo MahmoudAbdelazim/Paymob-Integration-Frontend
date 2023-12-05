@@ -39,7 +39,8 @@ const Signup = () => {
   };
   return (
     <div className="text-center pt-10">
-      <div className=" border-cyan-200 border-2 w-2/6 mx-auto p-4 rounded-md mb-10">
+      <h2 className="text-3xl mb-10">Signup for a new account!</h2>
+      <div className=" border-gray-200 border-2 w-2/6 mx-auto p-4 rounded-md mb-10">
         <div>
           <label className="block mb-2 text-sm font-medium text-gray-900 text-left">
             First Name
@@ -131,6 +132,12 @@ const Signup = () => {
           />
         </div>
         <div className="text-red-600 mb-4">{msg}</div>
+        <div className="text-left mb-4 mt-8">
+          Already have an account?{" "}
+          <a className="underline text-cyan-700" href="/login">
+            Login
+          </a>
+        </div>
         <button
           className="py-2 px-4 bg-cyan-700 text-white mx-4 text-xl rounded-md"
           onClick={handleSignup}
