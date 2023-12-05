@@ -1,17 +1,55 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
+const validateSignupData = (signupData, setMsg) => {
+  if (!signupData.firstName) {
+    setMsg("You have to enter your first name");
+    return false;
+  }
+  if (!signupData.lastName) {
+    setMsg("You have to enter your last name");
+    return false;
+  }
+  if (!signupData.username || signupData.username.length < 4) {
+    setMsg("Username must be at least 4 characters");
+    return false;
+  }
+  if (!signupData.phoneNumber) {
+    setMsg("You have to enter your phone number");
+    return false;
+  }
+  for (let i = 0; i < signupData.phoneNumber.length; i++) {
+    if (
+      signupData.phoneNumber.charAt(i) != "+" &&
+      !(
+        signupData.phoneNumber.charAt(i) >= "0" &&
+        signupData.phoneNumber.charAt(i) <= "9"
+      )
+    ) {
+      setMsg("Invalid phone number, can only include numbers and '+' symobl");
+      return false;
+    }
+  }
+  if (signupData.password.length < 8) {
+    setMsg("Password must be at least 8 characters");
+    return false;
+  }
+  if (signupData.password != signupData.repeatedPassword) {
+    setMsg("Repeated password doesn't match");
+    return false;
+  }
+  return true;
+};
+
 const Signup = () => {
   const { push, reload } = useRouter();
   const [signupData, setSignupData] = useState({});
   const [msg, setMsg] = useState("");
 
   const handleSignup = async () => {
-    if (signupData.password != signupData.repeatedPassword) {
-      setMsg("Repeated password doesn't match");
+    if (!validateSignupData(signupData, setMsg)) {
       return;
     }
-
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var raw = JSON.stringify(signupData);
@@ -42,7 +80,10 @@ const Signup = () => {
       <h2 className="text-3xl mb-10">Signup for a new account!</h2>
       <div className=" border-gray-200 border-2 w-2/6 mx-auto p-4 rounded-md mb-10">
         <div>
-          <label className="block mb-2 text-sm font-medium text-gray-900 text-left">
+          <label
+            className="block mb-2 text-sm font-medium text-gray-900 text-left"
+            htmlFor="firstName"
+          >
             First Name
           </label>
           <input
@@ -57,7 +98,10 @@ const Signup = () => {
           />
         </div>
         <div>
-          <label className="block mb-2 text-sm font-medium text-gray-900 text-left">
+          <label
+            className="block mb-2 text-sm font-medium text-gray-900 text-left"
+            htmlFor="lastName"
+          >
             Last Name
           </label>
           <input
@@ -72,7 +116,10 @@ const Signup = () => {
           />
         </div>
         <div>
-          <label className="block mb-2 text-sm font-medium text-gray-900 text-left">
+          <label
+            className="block mb-2 text-sm font-medium text-gray-900 text-left"
+            htmlFor="username"
+          >
             Username
           </label>
           <input
@@ -87,7 +134,10 @@ const Signup = () => {
           />
         </div>
         <div>
-          <label className="block mb-2 text-sm font-medium text-gray-900 text-left">
+          <label
+            className="block mb-2 text-sm font-medium text-gray-900 text-left"
+            htmlFor="phoneNumber"
+          >
             Phone Number
           </label>
           <input
@@ -102,7 +152,10 @@ const Signup = () => {
           />
         </div>
         <div>
-          <label className="block mb-2 text-sm font-medium text-gray-900 text-left">
+          <label
+            className="block mb-2 text-sm font-medium text-gray-900 text-left"
+            htmlFor="password"
+          >
             Password
           </label>
           <input
@@ -117,7 +170,10 @@ const Signup = () => {
           />
         </div>
         <div>
-          <label className="block mb-2 text-sm font-medium text-gray-900 text-left">
+          <label
+            className="block mb-2 text-sm font-medium text-gray-900 text-left"
+            htmlFor="repeatedPassword"
+          >
             Repeat Password
           </label>
           <input
@@ -139,7 +195,7 @@ const Signup = () => {
           </a>
         </div>
         <button
-          className="py-2 px-4 bg-cyan-700 text-white mx-4 text-xl rounded-md"
+          className="py-2 bg-cyan-700 text-white px-10 text-md rounded-md"
           onClick={handleSignup}
         >
           Signup

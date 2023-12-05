@@ -45,7 +45,7 @@ const MakeTransaction = () => {
   };
   return (
     <div className="text-center pt-10">
-      <h2 className="text-2xl mb-10">Make A Payment Transaction</h2>
+      <h2 className="text-3xl mb-10">Make A Payment Transaction</h2>
       <p className="mb-10">
         Just enter the amount of money you want to send me and it will land
         right in my account {";))"}
@@ -79,7 +79,7 @@ const MakeTransaction = () => {
         </div>
         <div className="text-red-600 mb-4">{msg}</div>
         <button
-          className="py-2 px-4 bg-cyan-700 text-white mx-4 text-xl rounded-md"
+          className="py-2 px-10 my-4 bg-cyan-700 hover:bg-cyan-900 transition-all text-white mx-4 text-md rounded-md"
           onClick={handleStartPaymentTransaction}
         >
           Send payment

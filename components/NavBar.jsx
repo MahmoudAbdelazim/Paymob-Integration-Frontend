@@ -50,27 +50,27 @@ const NavBar = () => {
       {!loading && (
         <>
           <h2 className="text-2xl">
-            <a href="/">Mahmoud's Paymob Integration Test App</a>
+            <a href="/" className="hover:text-cyan-900 transition-all">Mahmoud's Paymob Integration Test App</a>
           </h2>
           <div className="flex flex-row my-auto ml-6">
-            <div className="mx-2">
-              <a href="/">Home</a>
+            <div className="mx-4">
+              <a href="/" className="hover:text-cyan-900 hover:border-b hover:pb-1 hover:border-cyan-900 transition-all">Home</a>
             </div>
             {!isLoggedIn && (
               <>
-                <div className="mx-2">
-                  <a href="/signup">Signup</a>
+                <div className="mx-4">
+                  <a href="/signup" className="hover:text-cyan-900 hover:border-b hover:pb-1 hover:border-cyan-900 transition-all">Signup</a>
                 </div>
-                <div className="mx-2">
-                  <a href="/login">Login</a>
+                <div className="mx-4">
+                  <a href="/login" className="hover:text-cyan-900 hover:border-b hover:pb-1 hover:border-cyan-900 transition-all">Login</a>
                 </div>
               </>
             )}
             {isLoggedIn && (
               <>
-                <div><a href="/my-transactions">{userInfo.firstName}'s Transactions</a></div>
-                <div className="mx-2">
-                  <a href="/#" onClick={handleLogout}>
+                <div><a href="/my-transactions" className="hover:text-cyan-900 hover:border-b hover:pb-1 hover:border-cyan-900 transition-all">{userInfo.firstName}'s Transactions</a></div>
+                <div className="mx-4">
+                  <a href="/#" className="hover:text-cyan-900 hover:border-b hover:pb-1 hover:border-cyan-900 transition-all" onClick={handleLogout}>
                     Logout
                   </a>
                 </div>

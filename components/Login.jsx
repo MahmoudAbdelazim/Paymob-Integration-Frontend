@@ -1,10 +1,13 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import OTP from "./OTP";
 
 const Login = () => {
   const { push, reload } = useRouter();
   const [loginData, setLoginData] = useState({});
   const [msg, setMsg] = useState("");
+  const [showOTPBox, setShowOTPBox] = useState(false);
+  const [username, setUsername] = useState("");
 
   const handleLogin = async () => {
     var myHeaders = new Headers();
@@ -23,14 +26,15 @@ const Login = () => {
       );
       if (response.status == 200) {
         const result = await response.json();
-        localStorage.setItem("authToken", result.user.token);
-        push("/");
+        setUsername(result.username);
+        setShowOTPBox(true);
       } else {
         const result = await response.json();
         setMsg(result.message);
       }
     } catch (err) {
       console.error(err);
+      setMsg("An error occured");
     }
   };
   return (
@@ -78,12 +82,13 @@ const Login = () => {
           </a>
         </div>
         <button
-          className="py-2 px-4 bg-cyan-700 text-white mx-4 text-xl rounded-md"
+          className="py-2 px-10 bg-cyan-700 text-white mx-4 text-md rounded-md"
           onClick={handleLogin}
         >
           Login
         </button>
       </div>
+      {showOTPBox && <OTP username={username} />}
     </div>
   );
 };

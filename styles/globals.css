@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+input:active, input:focus {
+  border: 0px !important;
+  border-color: white;
+}

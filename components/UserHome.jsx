@@ -15,7 +15,7 @@ const UserHome = ({ userInfo }) => {
       <p className="mb-16">You can start a new payment transaction and send me money using your credit card!</p>
       <div>
         <button
-          className="py-2 px-4 bg-cyan-700 text-white mx-4 text-xl rounded-md"
+          className="py-2 px-4 mb-32 bg-cyan-700 text-white mx-4 text-xl rounded-md hover:bg-cyan-900 transition-all"
           onClick={handleStartTransaction}
         >
           Start a payment transaction
