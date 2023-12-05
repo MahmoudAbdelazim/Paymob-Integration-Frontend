@@ -3,6 +3,9 @@ import MakeTransaction from "@/components/MakeTransaction";
 import NavBar from "@/components/NavBar";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { Cairo } from "next/font/google";
+
+const cairo = Cairo({ subsets: ["latin"] });
 
 const MakeTransactionPage = () => {
   const {push, reload} = useRouter();
@@ -49,7 +52,7 @@ const MakeTransactionPage = () => {
     }
   }, []);
   return (
-    <div>
+    <div className={`${cairo.className}`}>
       {!loading && (
         <>
           <NavBar />

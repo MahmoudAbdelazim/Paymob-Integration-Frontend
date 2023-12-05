@@ -1,9 +1,9 @@
-import { Cairo } from "next/font/google";
 import NavBar from "@/components/NavBar";
 import Home from "@/components/Home";
 import { useEffect, useState } from "react";
 import UserHome from "@/components/UserHome";
 import Footer from "@/components/Footer";
+import { Cairo } from "next/font/google";
 
 const cairo = Cairo({ subsets: ["latin"] });
 
