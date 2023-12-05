@@ -8,6 +8,7 @@ const Login = () => {
   const [msg, setMsg] = useState("");
   const [showOTPBox, setShowOTPBox] = useState(false);
   const [username, setUsername] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleLogin = async () => {
     var myHeaders = new Headers();
@@ -27,6 +28,7 @@ const Login = () => {
       if (response.status == 200) {
         const result = await response.json();
         setUsername(result.username);
+        setPhoneNumber(result.phoneNumber);
         setShowOTPBox(true);
       } else {
         const result = await response.json();
@@ -88,7 +90,7 @@ const Login = () => {
           Login
         </button>
       </div>
-      {showOTPBox && <OTP username={username} />}
+      {showOTPBox && <OTP username={username} phoneNumber={phoneNumber} />}
     </div>
   );
 };

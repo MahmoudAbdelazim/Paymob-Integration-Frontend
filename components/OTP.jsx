@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const OTP = ({ username }) => {
+const OTP = ({ username, phoneNumber }) => {
   const { push } = useRouter();
   const [otp, setOtp] = useState("");
   const [msg, setMsg] = useState("");
@@ -47,7 +47,7 @@ const OTP = ({ username }) => {
     <div className=" border-gray-200 border-2 w-2/6 mx-auto p-5 rounded-md mb-10">
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900 text-left">
-          Enter the OTP Code sent to your phone number
+          Enter the OTP Code sent to your phone number {`(${phoneNumber})`}
         </label>
         <input
           className="mb-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
